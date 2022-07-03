@@ -96,7 +96,6 @@ const routes = [
   },
   {
     layout: DashboardLayout,
-    guard: AuthGuard,
     routes: [
       {
         path: "/home",

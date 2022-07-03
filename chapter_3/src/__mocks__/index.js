@@ -1,19 +1,19 @@
 import { createServer } from "miragejs";
 import { v4 as uuidv4 } from "uuid";
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 import wait from "utils/wait";
 
 const users = [
   {
-    id: 'e7ef3e70-e190-4610-82ab-a3d5373cc398',
-    email: 'demo@kiki.cat',
-    name: 'Celsus Yuval',
-    password: 'pasword123',
-  }
+    id: "e7ef3e70-e190-4610-82ab-a3d5373cc398",
+    email: "demo@kiki.cat",
+    name: "Celsus Yuval",
+    password: "pasword123",
+  },
 ];
 
-const JWT_SECRET = 'kiki-secret-key';
-const JWT_EXPIRES_IN = '5 days';
+const JWT_SECRET = "kiki-secret-key";
+const JWT_EXPIRES_IN = "5 days";
 
 createServer({
   routes() {
@@ -29,7 +29,7 @@ createServer({
 
         const accessToken = Authorization.split(" ")[1];
         const { userId } = jwt.verify(accessToken, JWT_SECRET);
-        const user = users.find((_user) => _user.id === userId);
+        const user = users.find((user) => user.id === userId);
 
         if (!user) {
           return [401, { message: "Invalid authorization token" }];
@@ -51,17 +51,17 @@ createServer({
       try {
         await wait(1000);
 
-        console.log(JSON.parse(request.requestBody))
+        console.log(JSON.parse(request.requestBody));
 
         const { email, password } = JSON.parse(request.requestBody);
-        const user = users.find((_user) => _user.email === email);
+        const user = users.find((user) => user.email === email);
 
         if (!user) {
-          return [400, { message: "Please check your email and password" }];
+          throw new Error("Please check your email and password");
         }
 
         if (user.password !== password) {
-          return [400, { message: "Invalid password" }];
+          throw new Error("Invalid password");
         }
 
         const accessToken = jwt.sign({ userId: user.id }, JWT_SECRET, {
@@ -69,15 +69,15 @@ createServer({
         });
 
         return {
-            accessToken,
-            user: {
-              id: user.id,
-              email: user.email,
-            },
-          };
+          accessToken,
+          user: {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+          },
+        };
       } catch (err) {
-        console.error(err);
-        return { message: "Internal server error" };
+        return { message: err.message };
       }
     });
 
@@ -86,10 +86,10 @@ createServer({
         await wait(1000);
 
         const { email, password } = JSON.parse(request.requestBody);
-        let user = users.find((_user) => _user.email === email);
+        let user = users.find((user) => user.email === email);
 
         if (user) {
-          return { message: "User already exists" };
+          throw new Error("User already exists");
         }
 
         user = {
@@ -103,15 +103,14 @@ createServer({
         });
 
         return {
-            accessToken,
-            user: {
-              id: user.id,
-              email: user.email,
-            },
-          };
+          accessToken,
+          user: {
+            id: user.id,
+            email: user.email,
+          },
+        };
       } catch (err) {
-        console.error(err);
-        return { message: "Internal server error" };
+        return { message: err.message };
       }
     });
 

@@ -6,9 +6,11 @@ You can follow the steps below to replicate the development environment:
 2. In your terminal, navigate to /chapter_3 
 3. Install all the dependencies by running `npm install`
 
-## `npm start`
+# Available scripts
 
-Runs the app in the development mode.\
+The available scripts remain the same as any React projects created via `Create-React-App`
+
+You can run the app in the development mode by running `npm start`.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
