@@ -30,19 +30,19 @@ export const renderRoutes = (routes = []) => {
         // parent route: with a layout but no children
         let Layout = route.layout;
         return (
-          <Route
-            key={i}
-            path={path}
-            element={
-              <Suspense fallback={<LoadingScreen />}>
-                <Guard>
-                  <Layout>
+          <Route element={<Layout />}>
+            <Route
+              key={i}
+              path={path}
+              element={
+                <Suspense fallback={<LoadingScreen />}>
+                  <Guard>
                     <Component />
-                  </Layout>
-                </Guard>
-              </Suspense>
-            }
-          />
+                  </Guard>
+                </Suspense>
+              }
+            />
+          </Route>
         );
       } else {
         // child route: index route or with a path, or
