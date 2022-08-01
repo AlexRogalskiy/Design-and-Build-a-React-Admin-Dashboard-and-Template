@@ -36,7 +36,7 @@ const Account = () => {
     try {
       handleClose();
       await logout();
-      navigate.push("/");
+      navigate("/login", { replace: true });
     } catch (err) {
       console.error(err);
     }

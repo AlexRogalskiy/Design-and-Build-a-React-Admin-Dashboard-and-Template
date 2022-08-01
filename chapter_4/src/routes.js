@@ -13,9 +13,18 @@ export const renderRoutes = (routes = []) => {
     if (route.routes) {
       let path = route.path ? route.path : false;
       let Layout = route.layout ? route.layout : Fragment;
+      let Guard = route.guard ? route.guard : Fragment;
 
       return (
-        <Route key={i} path={path} element={<Layout />}>
+        <Route
+          key={i}
+          path={path}
+          element={
+            <Guard>
+              <Layout />
+            </Guard>
+          }
+        >
           {renderRoutes(route.routes)}
         </Route>
       );
@@ -30,15 +39,19 @@ export const renderRoutes = (routes = []) => {
         // parent route: with a layout but no children
         let Layout = route.layout;
         return (
-          <Route element={<Layout />}>
+          <Route
+            element={
+              <Guard>
+                <Layout />
+              </Guard>
+            }
+          >
             <Route
               key={i}
               path={path}
               element={
                 <Suspense fallback={<LoadingScreen />}>
-                  <Guard>
-                    <Component />
-                  </Guard>
+                  <Component />
                 </Suspense>
               }
             />
@@ -53,11 +66,11 @@ export const renderRoutes = (routes = []) => {
             path={path}
             index={index}
             element={
-              <Suspense fallback={<LoadingScreen />}>
-                <Guard>
+              <Guard>
+                <Suspense fallback={<LoadingScreen />}>
                   <Component />
-                </Guard>
-              </Suspense>
+                </Suspense>
+              </Guard>
             }
           />
         );
@@ -101,11 +114,11 @@ const routes = [
   },
   {
     layout: DashboardLayout,
+    guard: AuthGuard,
     routes: [
       {
         path: "/home",
         component: lazy(() => import("views/DashboardView")),
-        guard: AuthGuard,
       },
       {
         path: "/account",
@@ -117,15 +130,14 @@ const routes = [
   {
     path: "/projects",
     layout: DashboardLayout,
+    guard: AuthGuard,
     routes: [
       {
         component: lazy(() => import("views/ProjectsView")),
-        guard: AuthGuard,
       },
       {
         path: ":projectId",
         component: lazy(() => import("views/ProjectView")),
-        guard: AuthGuard,
       },
     ],
   },
