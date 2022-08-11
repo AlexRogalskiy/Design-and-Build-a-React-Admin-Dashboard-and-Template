@@ -17,7 +17,7 @@ export const renderRoutes = (routes = []) => {
 
       return (
         <Route
-          key={i}
+          key={i + path}
           path={path}
           element={
             <Guard>
@@ -40,6 +40,7 @@ export const renderRoutes = (routes = []) => {
         let Layout = route.layout;
         return (
           <Route
+            key={i + path}
             element={
               <Guard>
                 <Layout />
@@ -47,7 +48,6 @@ export const renderRoutes = (routes = []) => {
             }
           >
             <Route
-              key={i}
               path={path}
               element={
                 <Suspense fallback={<LoadingScreen />}>
@@ -62,7 +62,7 @@ export const renderRoutes = (routes = []) => {
         // parent route: with no children or layout
         return (
           <Route
-            key={i}
+            key={i + path}
             path={path}
             index={index}
             element={

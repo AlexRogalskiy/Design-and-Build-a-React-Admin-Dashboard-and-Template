@@ -15,7 +15,7 @@ export const renderRoutes = (routes = []) => {
       let Layout = route.layout ? route.layout : Fragment;
 
       return (
-        <Route key={i} path={path} element={<Layout />}>
+        <Route key={i+path} path={path} element={<Layout />}>
           {renderRoutes(route.routes)}
         </Route>
       );
@@ -30,9 +30,8 @@ export const renderRoutes = (routes = []) => {
         // parent route: with a layout but no children
         let Layout = route.layout;
         return (
-          <Route element={<Layout />}>
+          <Route key={i+path} element={<Layout />}>
             <Route
-              key={i}
               path={path}
               element={
                 <Suspense fallback={<LoadingScreen />}>
@@ -49,7 +48,7 @@ export const renderRoutes = (routes = []) => {
         // parent route: with no children or layout
         return (
           <Route
-            key={i}
+            key={i+path}
             path={path}
             index={index}
             element={

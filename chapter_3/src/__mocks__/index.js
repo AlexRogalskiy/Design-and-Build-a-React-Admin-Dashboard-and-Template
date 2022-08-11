@@ -1,4 +1,4 @@
-import { createServer } from "miragejs";
+import { createServer, Response } from "miragejs";
 import { v4 as uuidv4 } from "uuid";
 import jwt from "jsonwebtoken";
 import wait from "utils/wait";
@@ -24,7 +24,7 @@ createServer({
         const { Authorization } = request.requestHeaders;
 
         if (!Authorization) {
-          return [401, { message: "Authorization token missing" }];
+          throw new Error("Authorization token missing");
         }
 
         const accessToken = Authorization.split(" ")[1];
@@ -32,7 +32,7 @@ createServer({
         const user = users.find((user) => user.id === userId);
 
         if (!user) {
-          return [401, { message: "Invalid authorization token" }];
+          throw new Error("Invalid authorization token");
         }
 
         return {
@@ -42,8 +42,7 @@ createServer({
           },
         };
       } catch (err) {
-        console.error(err);
-        return { message: "Internal server error" };
+        return new Response(401, { some: "header" }, { errors: [err.message] });
       }
     });
 
@@ -77,7 +76,7 @@ createServer({
           },
         };
       } catch (err) {
-        return { message: err.message };
+        return new Response(401, { some: "header" }, { errors: [err.message] });
       }
     });
 
@@ -110,7 +109,7 @@ createServer({
           },
         };
       } catch (err) {
-        return { message: err.message };
+        return new Response(401, { some: "header" }, { errors: [err.message] });
       }
     });
 

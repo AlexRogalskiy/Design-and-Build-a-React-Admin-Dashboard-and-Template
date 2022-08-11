@@ -84,22 +84,26 @@ export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialAuthState);
 
   const login = async (email, password) => {
-    const response = await axios.post("/api/account/login", {
-      email,
-      password,
-    });
-    const { accessToken, user } = response.data;
+    try {
+      const response = await axios.post("/api/account/login", {
+        email,
+        password,
+      });
+      const { accessToken, user } = response.data;
 
-    console.log(accessToken);
-    console.log(user);
+      console.log(accessToken);
+      console.log(user);
 
-    setSession(accessToken);
-    dispatch({
-      type: "LOGIN",
-      payload: {
-        user,
-      },
-    });
+      setSession(accessToken);
+      dispatch({
+        type: "LOGIN",
+        payload: {
+          user,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const logout = () => {
@@ -108,20 +112,24 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (email, password) => {
-    const response = await axios.post("/api/account/register", {
-      email,
-      password,
-    });
-    const { accessToken, user } = response.data;
+    try {
+      const response = await axios.post("/api/account/register", {
+        email,
+        password,
+      });
+      const { accessToken, user } = response.data;
 
-    window.localStorage.setItem("accessToken", accessToken);
+      window.localStorage.setItem("accessToken", accessToken);
 
-    dispatch({
-      type: "REGISTER",
-      payload: {
-        user,
-      },
-    });
+      dispatch({
+        type: "REGISTER",
+        payload: {
+          user,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
