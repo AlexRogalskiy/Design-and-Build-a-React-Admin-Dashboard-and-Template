@@ -25,8 +25,11 @@ const JWTRegister = ({}) => {
         email: Yup.string()
           .email("Must be a valid email")
           .max(255)
-          .required("Email is required"),
-        password: Yup.string().min(7).max(255).required("Password is required"),
+          .required("Required"),
+        password: Yup.string()
+          .min(6, "Password should be at least 6 characters long")
+          .max(255)
+          .required("Required"),
         policy: Yup.boolean().oneOf([true], "You must agree to our terms"),
       })}
       onSubmit={async (values) => {
