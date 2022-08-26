@@ -13,11 +13,8 @@ const JWTLogin = () => {
         password: "pasword123",
       }}
       validationSchema={Yup.object().shape({
-        email: Yup.string()
-          .email("Must be a valid email")
-          .required("Email is required"),
-        password: Yup.string()
-          .required("Password is required"),
+        email: Yup.string().email("Must be a valid email").required("Required"),
+        password: Yup.string().required("Required"),
       })}
       onSubmit={async (values) => {
         await login(values.email, values.password);
