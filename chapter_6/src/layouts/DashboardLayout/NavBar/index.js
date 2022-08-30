@@ -20,6 +20,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         anchor="left"
         sx={{ width: 256, display: { xs: "block", md: "none" } }}
         open={openMobile}
+        onClose={onMobileClose}
         variant="temporary"
       >
         <Content />
