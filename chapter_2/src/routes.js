@@ -105,6 +105,10 @@ const routes = [
         component: lazy(() => import("views/ProjectsView")),
       },
       {
+        path: "create",
+        component: lazy(() => import("views/ProjectCreateView")),
+      },
+      {
         path: ":projectId",
         component: lazy(() => import("views/ProjectView")),
       },

@@ -144,6 +144,11 @@ const routes = [
         component: lazy(() => import("views/ProjectsView")),
       },
       {
+        path: "create",
+        component: lazy(() => import("views/ProjectCreateView")),
+        guard: AuthGuard,
+      },
+      {
         path: ":projectId",
         component: lazy(() => import("views/ProjectView")),
       },
