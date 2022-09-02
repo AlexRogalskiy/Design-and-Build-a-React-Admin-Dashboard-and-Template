@@ -12,14 +12,14 @@ const Activities = () => {
   const getActivities = async () => {
     try {
       const response = await axios.get("/api/latest-activities");
-      setActivities(response.data.activities);
+      if (isMountedRef.current) setActivities(response.data.activities);
     } catch (err) {
       console.error(err);
     }
   };
 
   useEffect(() => {
-    if (isMountedRef.current) getActivities();
+    getActivities();
   }, []);
 
   return (

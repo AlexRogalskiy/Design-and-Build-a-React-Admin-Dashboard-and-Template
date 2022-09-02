@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import useAuth from "hooks/useAuth";
 
-const JWTRegister = ({}) => {
+const JWTRegister = () => {
   const { register } = useAuth();
 
   return (

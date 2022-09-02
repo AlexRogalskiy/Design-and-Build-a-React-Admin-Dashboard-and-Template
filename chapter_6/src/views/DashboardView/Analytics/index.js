@@ -28,28 +28,29 @@ const Analytics = () => {
   const getData = async () => {
     try {
       const response = await axios.get("/api/analytics");
-      setData(response.data.analytics);
+      if (isMountedRef.current) setData(response.data.analytics);
     } catch (err) {
       console.error(err);
     }
   };
 
   useEffect(() => {
-    if (isMountedRef.current) getData();
+    getData();
   }, []);
 
   const updateData = () => {
     setTimeout(() => {
-      setData((prevData) => {
-        const newVisitors = [...prevData.visitors];
-        newVisitors[newVisitors.length-1] = getRandomInt(50, 150);
+      if (isMountedRef.current)
+        setData((prevData) => {
+          const newVisitors = [...prevData.visitors];
+          newVisitors[newVisitors.length - 1] = getRandomInt(50, 150);
 
-        const newPages = [...prevData.pages];
-        const randomPage = getRandomInt(0, newPages.length - 1);
-        newPages[randomPage].views = getRandomInt(1, 30);
+          const newPages = [...prevData.pages];
+          const randomPage = getRandomInt(0, newPages.length - 1);
+          newPages[randomPage].views = getRandomInt(1, 30);
 
-        return { visitors: newVisitors, pages: newPages };
-      });
+          return { visitors: newVisitors, pages: newPages };
+        });
     }, 1600);
   };
 
@@ -73,7 +74,10 @@ const Analytics = () => {
         title="Analytics"
         titleTypographyProps={{ color: "textPrimary", variant: "h5" }}
       />
-      <Chart dataProp={data.visitors} labels={data.visitors.map((value, i) => i)} />
+      <Chart
+        dataProp={data.visitors}
+        labels={data.visitors.map((value, i) => i)}
+      />
       <List>
         {data.pages.map((page) => (
           <ListItem divider key={page.pathname}>

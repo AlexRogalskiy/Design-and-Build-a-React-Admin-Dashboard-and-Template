@@ -51,7 +51,7 @@ const Banner = () => {
                   </Grid>
                   <Grid item>
                     <Typography variant="h1" color="secondary">
-                      11
+                      10
                     </Typography>
                     <Typography variant="overline" color="textSecondary">
                       Demo Pages
@@ -59,7 +59,7 @@ const Banner = () => {
                   </Grid>
                   <Grid item>
                     <Typography variant="h1" color="secondary">
-                      300+
+                      100+
                     </Typography>
                     <Typography variant="overline" color="textSecondary">
                       Components

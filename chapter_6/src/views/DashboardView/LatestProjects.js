@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import moment from "moment";
 import numeral from "numeral";
@@ -27,24 +27,22 @@ const LatestProjects = () => {
   const isMountedRef = useIsMountedRef();
   const [projects, setProjects] = useState([]);
 
-  const getProjects = useCallback(async () => {
+  const getProjects = async () => {
     try {
       const response = await axios.get("/api/latest-projects");
       return response.data.projects;
     } catch (err) {
       console.error(err);
     }
-  }, [isMountedRef]);
+  };
 
   const setProjectState = async () => {
     let pts = await getProjects();
-    setProjects(pts);
+    if (isMountedRef.current) setProjects(pts);
   };
 
   useEffect(() => {
-    if (isMountedRef.current) {
-      setProjectState();
-    }
+    setProjectState();
   }, []);
 
   return (
@@ -52,7 +50,7 @@ const LatestProjects = () => {
       <CardHeader action={<GenericMoreButton />} title="Projects" />
       <Divider />
 
-      <Box minWidth={900}>
+      <Box>
         <Table>
           <TableHead>
             <TableRow>

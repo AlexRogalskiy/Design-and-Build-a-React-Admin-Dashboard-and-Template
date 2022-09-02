@@ -46,7 +46,7 @@ export const AvatarDark = styled(Avatar)(({ theme }) => ({
 const DashboardView = () => {
   return (
     <Page title="Kiki: Dashboard">
-      <Container maxWidth={false}>
+      <Container maxWidth="xl">
         <Header />
         <Grid container spacing={3}>
           <Grid item lg={3} sm={6} xs={12}>

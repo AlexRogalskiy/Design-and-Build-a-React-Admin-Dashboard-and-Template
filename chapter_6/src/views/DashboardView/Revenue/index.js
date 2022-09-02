@@ -12,14 +12,14 @@ const Revenue = () => {
   const getRevenue = async () => {
     try {
       const response = await axios.get("/api/revenue");
-      setRevenue(response.data.revenue);
+      if (isMountedRef.current) setRevenue(response.data.revenue);
     } catch (err) {
       console.error(err);
     }
   };
 
   useEffect(() => {
-    if (isMountedRef.current) getRevenue();
+    getRevenue();
   }, []);
 
   return (
