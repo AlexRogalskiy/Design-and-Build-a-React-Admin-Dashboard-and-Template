@@ -1,21 +1,22 @@
-import { useCallback, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Box, Container, Divider, Tabs, Tab } from "@mui/material";
+import { useParams } from "react-router-dom";
 import axios from "utils/axios";
 import useIsMountedRef from "hooks/useIsMountedRef";
 import Page from "components/Page";
 import Activities from "./Activities";
 import Header from "./Header";
 import Overview from "./Overview";
-// import Reviews from "./Reviews";
+
 
 const ProjectDetailsView = () => {
   const isMountedRef = useIsMountedRef();
   const [currentTab, setCurrentTab] = useState("overview");
   const [project, setProject] = useState(null);
+  const { projectId } = useParams();
 
   const tabs = [
     { value: "overview", label: "Overview" },
-    // { value: "reviews", label: "Reviews" },
     { value: "activity", label: "Activity" },
   ];
 
@@ -23,9 +24,9 @@ const ProjectDetailsView = () => {
     setCurrentTab(value);
   };
 
-  const getProject = useCallback(async () => {
+  const getProject = async () => {
     try {
-      const response = await axios.get("/api/projects/1");
+      const response = await axios.get(`/api/projects/${projectId}`);
 
       if (isMountedRef.current) {
         setProject(response.data.project);
@@ -33,11 +34,11 @@ const ProjectDetailsView = () => {
     } catch (err) {
       console.error(err);
     }
-  }, [isMountedRef]);
+  };
 
   useEffect(() => {
     getProject();
-  }, [getProject]);
+  }, []);
 
   if (!project) {
     return null;
@@ -63,7 +64,6 @@ const ProjectDetailsView = () => {
         <Divider />
         <Box mt={3}>
           {currentTab === "overview" && <Overview project={project} />}
-          {/* {currentTab === "reviews" && <Reviews reviews={project.reviews} />} */}
           {currentTab === "activity" && (
             <Activities activities={project.activities} />
           )}

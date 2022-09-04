@@ -16,13 +16,15 @@ import GroupIcon from "@mui/icons-material/Group";
 import getInitials from "utils/getInitials";
 
 const ProjectCard = ({ project }) => {
+  const url = `/projects/${project.id}`;
+  
   return (
     <Card>
       <Box p={3}>
         <Link
           color="textPrimary"
           component={RouterLink}
-          to="/projects/1"
+          to={url}
           variant="h5"
         >
           <CardMedia
@@ -45,7 +47,7 @@ const ProjectCard = ({ project }) => {
             <Link
               color="textPrimary"
               component={RouterLink}
-              to="/projects/1"
+              to={url}
               variant="h5"
             >
               {project.title}

@@ -25,7 +25,7 @@ const NavData = [
       },
       {
         title: "Project details",
-        href: "/projects/1",
+        href: "/projects/e7ef-e190-4610-82ab-38e4",
       },
     ],
   },

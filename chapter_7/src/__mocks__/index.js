@@ -96,7 +96,7 @@ const projects = [
     currency: "$",
     budget: 1800,
     image: "/static/images/projects/project_2.jpg",
-    membersCount: 2,
+    membersCount: 3,
     author: {
       avatar: "/static/images/avatars/avatar_2.png",
       name: "Netta Elías",
@@ -107,6 +107,61 @@ const projects = [
       .subtract(29, "seconds")
       .toDate()
       .getTime(),
+    members: [
+      {
+        avatar: "/static/images/avatars/avatar_2.png",
+        name: "Miller Edwards",
+      },
+      {
+        avatar: "/static/images/avatars/avatar_3.png",
+        name: "Mahthildis Rashid",
+      },
+      {
+        avatar: "/static/images/avatars/avatar_4.png",
+        name: "Merrile Burgett",
+      },
+    ],
+    activities: [
+      {
+        id: "b35y-e190-4610-82ab-38e4-bdfe",
+        createdAt: moment().subtract(3, "hours").toDate().getTime(),
+        description: "updated the project description",
+        subject: "Project manager",
+        type: "update_project",
+      },
+      {
+        id: "b35y-e190-4610-82ab-38e4-5e8d",
+        createdAt: moment().subtract(27, "hours").toDate().getTime(),
+        description: "joined the project as a team member",
+        subject: "Mahthildis Rashid",
+        type: "join_project",
+      },
+      {
+        id: "b35y-e190-4610-82ab-38e4-5cf1",
+        createdAt: moment()
+          .subtract(7, "days")
+          .subtract(3, "hours")
+          .toDate()
+          .getTime(),
+        description: "joined the project as a team member",
+        subject: "Merrile Burgett",
+        type: "join_project",
+      },
+      {
+        id: "b35y-e190-4610-82ab-38e4-d8f4",
+        createdAt: moment().subtract(8, "days").toDate().getTime(),
+        description: "updated the project budget",
+        subject: "Project manager",
+        type: "budget_change",
+      },
+      {
+        id: "b35y-e190-4610-82ab-38e4-21c5",
+        createdAt: moment().subtract(9, "days").toDate().getTime(),
+        description: "was created",
+        subject: "Springboard",
+        type: "item_created",
+      },
+    ],
   },
   {
     id: "b35y-e190-4610-uy55-38e4",
@@ -114,7 +169,7 @@ const projects = [
     currency: "$",
     budget: 6600,
     image: "/static/images/projects/project_3.jpg",
-    membersCount: 4,
+    membersCount: 2,
     author: {
       avatar: "/static/images/avatars/avatar_3.png",
       name: "Mahthildis Rashid",
@@ -125,6 +180,46 @@ const projects = [
       .subtract(30, "seconds")
       .toDate()
       .getTime(),
+    members: [
+      {
+        avatar: "/static/images/avatars/avatar_5.png",
+        name: "Lei Zhang",
+      },
+      {
+        avatar: "/static/images/avatars/avatar_1.png",
+        name: "Mahthildis Rashid",
+      },
+    ],
+    activities: [
+      {
+        id: "b35y-e190-4610-uy55-38e4-bdfe",
+        createdAt: moment().subtract(3, "hours").toDate().getTime(),
+        description: "updated the project description",
+        subject: "Project manager",
+        type: "update_project",
+      },
+      {
+        id: "b35y-e190-4610-uy55-38e4-5e8d",
+        createdAt: moment().subtract(27, "hours").toDate().getTime(),
+        description: "joined the project as a team member",
+        subject: "Lei Zhang",
+        type: "join_project",
+      },
+      {
+        id: "b35y-e190-4610-uy55-38e4-d8f4",
+        createdAt: moment().subtract(8, "days").toDate().getTime(),
+        description: "updated the project budget",
+        subject: "Project manager",
+        type: "budget_change",
+      },
+      {
+        id: "b35y-e190-4610-uy55-38e4-21c5",
+        createdAt: moment().subtract(9, "days").toDate().getTime(),
+        description: "was created",
+        subject: "Springboard",
+        type: "item_created",
+      },
+    ],
   },
   {
     id: "b35y-e190-11y6-uy55-38e4",
@@ -143,6 +238,61 @@ const projects = [
       .subtract(30, "seconds")
       .toDate()
       .getTime(),
+    members: [
+      {
+        avatar: "/static/images/avatars/avatar_1.png",
+        name: "Anje Keizer",
+      },
+      {
+        avatar: "/static/images/avatars/avatar_2.png",
+        name: "Celsus Yuval",
+      },
+      {
+        avatar: "/static/images/avatars/avatar_4.png",
+        name: "Merrile Burgett",
+      },
+    ],
+    activities: [
+      {
+        id: "b35y-e190-11y6-uy55-38e4-bdfe",
+        createdAt: moment().subtract(3, "hours").toDate().getTime(),
+        description: "updated the project description",
+        subject: "Project manager",
+        type: "update_project",
+      },
+      {
+        id: "b35y-e190-11y6-uy55-38e4-5e8d",
+        createdAt: moment().subtract(27, "hours").toDate().getTime(),
+        description: "joined the project as a team member",
+        subject: "Celsus Yuval",
+        type: "join_project",
+      },
+      {
+        id: "b35y-e190-4610-82ab-38e4-5cf1",
+        createdAt: moment()
+          .subtract(7, "days")
+          .subtract(3, "hours")
+          .toDate()
+          .getTime(),
+        description: "joined the project as a team member",
+        subject: "Merrile Burgett",
+        type: "join_project",
+      },
+      {
+        id: "b35y-e190-11y6-uy55-38e4-d8f4",
+        createdAt: moment().subtract(8, "days").toDate().getTime(),
+        description: "updated the project budget",
+        subject: "Project manager",
+        type: "budget_change",
+      },
+      {
+        id: "b35y-e190-11y6-uy55-38e4-21c5",
+        createdAt: moment().subtract(9, "days").toDate().getTime(),
+        description: "was created",
+        subject: "Springboard",
+        type: "item_created",
+      },
+    ],
   },
   {
     id: "b35y-tx41-11y6-uy55-38e4",
@@ -150,7 +300,7 @@ const projects = [
     currency: "$",
     budget: 3900,
     image: "/static/images/projects/project_5.jpg",
-    membersCount: 5,
+    membersCount: 1,
     author: {
       avatar: "/static/images/avatars/avatar_5.png",
       name: "Lei Zhang",
@@ -161,6 +311,35 @@ const projects = [
       .subtract(6, "seconds")
       .toDate()
       .getTime(),
+    members: [
+      {
+        avatar: "/static/images/avatars/avatar_4.png",
+        name: "Merrile Burgett",
+      },
+    ],
+    activities: [
+      {
+        id: "b35y-tx41-11y6-uy55-38e4-bdfe",
+        createdAt: moment().subtract(3, "hours").toDate().getTime(),
+        description: "updated the project description",
+        subject: "Project manager",
+        type: "update_project",
+      },
+      {
+        id: "b35y-tx41-11y6-uy55-38e4-d8f4",
+        createdAt: moment().subtract(8, "days").toDate().getTime(),
+        description: "updated the project budget",
+        subject: "Project manager",
+        type: "budget_change",
+      },
+      {
+        id: "b35y-tx41-11y6-uy55-38e4-21c5",
+        createdAt: moment().subtract(9, "days").toDate().getTime(),
+        description: "was created",
+        subject: "Springboard",
+        type: "item_created",
+      },
+    ],
   },
 ];
 
@@ -327,6 +506,14 @@ createServer({
           time: moment().subtract(5, "days").toDate().getTime(),
           members: [
             {
+              avatar: "/static/images/avatars/avatar_2.png",
+              name: "Miller Edwards",
+            },
+            {
+              avatar: "/static/images/avatars/avatar_3.png",
+              name: "Mahthildis Rashid",
+            },
+            {
               avatar: "/static/images/avatars/avatar_4.png",
               name: "Merrile Burgett",
             },
@@ -375,7 +562,7 @@ createServer({
           ],
           project: {
             id: "b35y-e190-4610-uy55-38e4",
-            name: "Scalable application development",
+            name: "Customized enterprise software",
           },
         },
       ];
@@ -443,8 +630,10 @@ createServer({
       return { projects };
     });
 
-    this.get("/projects/1", async () => {
-      const project = projects[0];
+    this.get("/projects/:projectId", async (schema, request) => {
+      const projectId = request.params.projectId;
+
+      const project = projects.find((project) => project.id === projectId);
 
       return { project };
     });

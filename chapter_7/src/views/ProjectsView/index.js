@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Box, Container } from "@mui/material";
 import Page from "components/Page";
 import axios from "utils/axios";
@@ -7,12 +7,11 @@ import Header from "./Header";
 import SearchBar from "./SearchBar";
 import Results from "./Results";
 
-
 const ProjectBrowseView = () => {
   const isMountedRef = useIsMountedRef();
   const [projects, setProjects] = useState([]);
 
-  const getProjects = useCallback(async () => {
+  const getProjects = async () => {
     try {
       const response = await axios.get("/api/projects");
 
@@ -22,11 +21,11 @@ const ProjectBrowseView = () => {
     } catch (err) {
       console.error(err);
     }
-  }, [isMountedRef]);
+  };
 
   useEffect(() => {
     getProjects();
-  }, [getProjects]);
+  }, []);
 
   return (
     <Page title="Kiki: Projects">

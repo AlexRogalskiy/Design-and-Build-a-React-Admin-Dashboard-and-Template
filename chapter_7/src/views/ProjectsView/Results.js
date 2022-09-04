@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, memo } from "react";
 import PropTypes from "prop-types";
 import {
   Box,
@@ -87,7 +87,7 @@ const Results = ({ projects }) => {
       <Grid container spacing={5}>
         {projects.map((project) => (
           <Grid item key={project.id} lg={4} md={6} sm={6} xs={12}>
-            <ProjectCard project={project} />
+            <ProjectCard project={project}/>
           </Grid>
         ))}
       </Grid>
@@ -102,4 +102,4 @@ Results.propTypes = {
   projects: PropTypes.array.isRequired,
 };
 
-export default Results;
+export default memo(Results);
