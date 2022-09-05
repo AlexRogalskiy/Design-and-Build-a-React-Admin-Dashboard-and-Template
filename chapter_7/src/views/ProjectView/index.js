@@ -9,7 +9,7 @@ import Header from "./Header";
 import Overview from "./Overview";
 
 
-const ProjectDetailsView = () => {
+const ProjectView = () => {
   const isMountedRef = useIsMountedRef();
   const [currentTab, setCurrentTab] = useState("overview");
   const [project, setProject] = useState(null);
@@ -73,4 +73,4 @@ const ProjectDetailsView = () => {
   );
 };
 
-export default ProjectDetailsView;
+export default ProjectView;

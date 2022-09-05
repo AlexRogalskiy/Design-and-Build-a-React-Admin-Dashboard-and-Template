@@ -33,10 +33,10 @@ const ButtonCustomized = styled(Button)(({ theme }) => ({
   marginRight: theme.spacing(2),
 }));
 
-const Results = ({ projects }) => {
+const Results = ({ projects, setProjects }) => {
   const sortRef = useRef(null);
   const [openSort, setOpenSort] = useState(false);
-  const [selectedSort, setSelectedSort] = useState("Most popular");
+  const [selectedSort, setSelectedSort] = useState("Most recent");
 
   const handleSortOpen = () => {
     setOpenSort(true);
@@ -47,7 +47,28 @@ const Results = ({ projects }) => {
   };
 
   const handleSortSelect = (value) => {
+    if (value === selectedSort) return;
+
     setSelectedSort(value);
+
+    const newProjects = structuredClone(projects);
+    if (value === "Most recent")
+      newProjects.sort((a, b) => {
+        const dateA = new Date(a.createdAt);
+        const dateB = new Date(b.createdAt);
+        return dateB - dateA;
+      });
+    else if (value === "Budget high")
+      newProjects.sort((a, b) => {
+        return b.budget - a.budget;
+      });
+    else
+      newProjects.sort((a, b) => {
+        return a.budget - b.budget;
+      });
+
+    setProjects(newProjects);
+
     setOpenSort(false);
   };
 
@@ -59,13 +80,11 @@ const Results = ({ projects }) => {
         open={openSort}
         elevation={1}
       >
-        {["Most recent", "Start time", "Budget high", "Budget low"].map(
-          (option) => (
-            <MenuItem key={option} onClick={() => handleSortSelect(option)}>
-              <ListItemText primary={option} />
-            </MenuItem>
-          )
-        )}
+        {["Most recent", "Budget high", "Budget low"].map((option) => (
+          <MenuItem key={option} onClick={() => handleSortSelect(option)}>
+            <ListItemText primary={option} />
+          </MenuItem>
+        ))}
       </Menu>
       <Box
         display="flex"
@@ -87,7 +106,7 @@ const Results = ({ projects }) => {
       <Grid container spacing={5}>
         {projects.map((project) => (
           <Grid item key={project.id} lg={4} md={6} sm={6} xs={12}>
-            <ProjectCard project={project}/>
+            <ProjectCard project={project} />
           </Grid>
         ))}
       </Grid>
@@ -100,6 +119,7 @@ const Results = ({ projects }) => {
 
 Results.propTypes = {
   projects: PropTypes.array.isRequired,
+  setProjects: PropTypes.func.isRequired
 };
 
 export default memo(Results);

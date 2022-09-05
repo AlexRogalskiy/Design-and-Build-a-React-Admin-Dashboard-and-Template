@@ -7,7 +7,7 @@ import Header from "./Header";
 import SearchBar from "./SearchBar";
 import Results from "./Results";
 
-const ProjectBrowseView = () => {
+const ProjectsView = () => {
   const isMountedRef = useIsMountedRef();
   const [projects, setProjects] = useState([]);
 
@@ -15,9 +15,14 @@ const ProjectBrowseView = () => {
     try {
       const response = await axios.get("/api/projects");
 
-      if (isMountedRef.current) {
-        setProjects(response.data.projects);
-      }
+      const newProjects = response.data.projects;
+      newProjects.sort((a, b) => {
+        const dateA = new Date(a.createdAt);
+        const dateB = new Date(b.createdAt);
+        return dateB - dateA;
+      });
+
+      if (isMountedRef.current) setProjects(newProjects);
     } catch (err) {
       console.error(err);
     }
@@ -35,11 +40,11 @@ const ProjectBrowseView = () => {
           <SearchBar />
         </Box>
         <Box mt={6} mb={3}>
-          <Results projects={projects} />
+          <Results projects={projects} setProjects={setProjects} />
         </Box>
       </Container>
     </Page>
   );
 };
 
-export default ProjectBrowseView;
+export default ProjectsView;
