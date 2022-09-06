@@ -10,31 +10,12 @@ import {
   Typography,
   Pagination,
 } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ProjectCard from "./ProjectCard";
 
-const TypographyCustomized = styled(Typography)(({ theme }) => ({
-  position: "relative",
-  "&:after": {
-    position: "absolute",
-    bottom: -8,
-    left: 0,
-    content: '" "',
-    height: 3,
-    width: 48,
-    backgroundColor: theme.palette.primary.main,
-  },
-}));
-
-const ButtonCustomized = styled(Button)(({ theme }) => ({
-  textTransform: "none",
-  letterSpacing: 0,
-  marginRight: theme.spacing(2),
-}));
 
 const Results = ({ projects, setProjects }) => {
-  const sortRef = useRef(null);
+  const buttonRef = useRef(null);
   const [openSort, setOpenSort] = useState(false);
   const [selectedSort, setSelectedSort] = useState("Most recent");
 
@@ -74,18 +55,6 @@ const Results = ({ projects, setProjects }) => {
 
   return (
     <div>
-      <Menu
-        anchorEl={sortRef.current}
-        onClose={handleSortClose}
-        open={openSort}
-        elevation={1}
-      >
-        {["Most recent", "Budget high", "Budget low"].map((option) => (
-          <MenuItem key={option} onClick={() => handleSortSelect(option)}>
-            <ListItemText primary={option} />
-          </MenuItem>
-        ))}
-      </Menu>
       <Box
         display="flex"
         alignItems="center"
@@ -93,16 +62,50 @@ const Results = ({ projects, setProjects }) => {
         flexWrap="wrap"
         mb={2}
       >
-        <TypographyCustomized variant="h5" color="textPrimary">
+        <Typography
+          sx={{
+            position: "relative",
+            "&:after": {
+              position: "absolute",
+              bottom: -8,
+              left: 0,
+              content: '" "',
+              height: 3,
+              width: 48,
+              backgroundColor: (theme) => theme.palette.primary.main,
+            },
+          }}
+          variant="h5"
+          color="textPrimary"
+        >
           {projects.length} projects in total
-        </TypographyCustomized>
-        <Box display="flex" alignItems="center">
-          <ButtonCustomized onClick={handleSortOpen} ref={sortRef}>
-            {selectedSort}
-            <ArrowDropDownIcon />
-          </ButtonCustomized>
-        </Box>
+        </Typography>
+        <Button
+          sx={{
+            textTransform: "none",
+            letterSpacing: 0,
+            marginRight: (theme) => theme.spacing(2),
+          }}
+          onClick={handleSortOpen}
+          ref={buttonRef}
+        >
+          {selectedSort}
+          <ArrowDropDownIcon />
+        </Button>
+        <Menu
+          anchorEl={buttonRef.current}
+          onClose={handleSortClose}
+          open={openSort}
+          elevation={1}
+        >
+          {["Most recent", "Budget high", "Budget low"].map((option) => (
+            <MenuItem key={option} onClick={() => handleSortSelect(option)}>
+              <ListItemText primary={option} />
+            </MenuItem>
+          ))}
+        </Menu>
       </Box>
+
       <Grid container spacing={5}>
         {projects.map((project) => (
           <Grid item key={project.id} lg={4} md={6} sm={6} xs={12}>
@@ -119,7 +122,7 @@ const Results = ({ projects, setProjects }) => {
 
 Results.propTypes = {
   projects: PropTypes.array.isRequired,
-  setProjects: PropTypes.func.isRequired
+  setProjects: PropTypes.func.isRequired,
 };
 
 export default memo(Results);

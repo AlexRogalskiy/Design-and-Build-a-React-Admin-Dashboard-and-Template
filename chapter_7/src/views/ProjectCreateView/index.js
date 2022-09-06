@@ -42,17 +42,10 @@ const CustomStepIcon = ({ active, completed, icon }) => {
   return (
     <Avatar
       sx={{
-        vertical: {
-          marginLeft: 30,
-          padding: 0,
-        },
-        line: {
-          borderColor: (theme) => theme.palette.divider,
-        },
         ...(active && {
           backgroundColor: (theme) => theme.palette.secondary.main,
-          boxShadow: (theme) => theme.shadows[10],
           color: (theme) => theme.palette.secondary.contrastText,
+          boxShadow: (theme) => theme.shadows[5],
         }),
         ...(completed && {
           backgroundColor: (theme) => theme.palette.secondary.main,
@@ -60,7 +53,7 @@ const CustomStepIcon = ({ active, completed, icon }) => {
         }),
       }}
     >
-      <Icon size="20" />
+      <Icon />
     </Avatar>
   );
 };
@@ -84,7 +77,7 @@ const reducer = (state, action) => {
 
       return {
         ...state,
-        title
+        title,
       };
     }
     case "DESCRIPTION": {
@@ -129,7 +122,7 @@ const ProjectCreateView = () => {
   if (completed)
     return (
       <Page title="Kiki: Create a New Project">
-        <Container maxWidth={false}>
+        <Container maxWidth="xl">
           <Header />
           <ProjectSuccess />
         </Container>
@@ -145,8 +138,7 @@ const ProjectCreateView = () => {
             <Grid item xs={12} md={3} padding={3}>
               <Stepper
                 activeStep={activeStep}
-                sx={{ backgroundColor: "transparent" }}
-                connector={<StepConnector />}
+                connector={<StepConnector sx={{ marginLeft: 2.2 }} />}
                 orientation="vertical"
               >
                 {steps.map((step) => (
@@ -161,7 +153,11 @@ const ProjectCreateView = () => {
             <Grid item xs={12} md={9} padding={3}>
               <Box p={3}>
                 {activeStep === 0 && (
-                  <ProjectBasics onNext={handleNext} dispatch={dispatch} state={state} />
+                  <ProjectBasics
+                    onNext={handleNext}
+                    dispatch={dispatch}
+                    state={state}
+                  />
                 )}
                 {activeStep === 1 && (
                   <ProjectDetails

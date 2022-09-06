@@ -39,7 +39,7 @@ const ProjectSuccess = () => {
               variant="contained"
               color="secondary"
               component={RouterLink}
-              to="/projects/1"
+              to="/projects/e7ef-e190-4610-82ab-38e4"
             >
               View your project
             </Button>
