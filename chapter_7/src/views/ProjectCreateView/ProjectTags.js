@@ -21,7 +21,6 @@ const ProjectTags = ({ onBack, onNext, dispatch, state }) => {
     <Formik
       initialValues={{
         tags: state.tags || [],
-        submit: null,
       }}
       validationSchema={Yup.object().shape({
         tags: Yup.array(),
@@ -148,13 +147,10 @@ const ProjectTags = ({ onBack, onNext, dispatch, state }) => {
 };
 
 ProjectTags.propTypes = {
-  onNext: PropTypes.func,
-  onBack: PropTypes.func,
-};
-
-ProjectTags.defaultProps = {
-  onNext: () => {},
-  onBack: () => {},
+  onBack: PropTypes.func.isRequired,
+  onNext: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  state: PropTypes.object.isRequired,
 };
 
 export default ProjectTags;

@@ -1,7 +1,5 @@
 import { useState, useReducer } from "react";
-import PropTypes from "prop-types";
 import {
-  Avatar,
   Box,
   Container,
   Grid,
@@ -11,63 +9,20 @@ import {
   StepLabel,
   Stepper,
 } from "@mui/material";
-import StarIcon from "@mui/icons-material/Star";
-import DetailsIcon from "@mui/icons-material/Details";
-import TagIcon from "@mui/icons-material/Tag";
 import Page from "components/Page";
+import Header from "./Header";
 import ProjectBasics from "./ProjectBasics";
 import ProjectDetails from "./ProjectDetails";
-import Header from "./Header";
 import ProjectSuccess from "./ProjectSuccess";
+import ProjectBudget from "./ProjectBudget";
 import ProjectTags from "./ProjectTags";
-
-const steps = [
-  {
-    label: "Basic information",
-    icon: StarIcon,
-  },
-  {
-    label: "Detailed description",
-    icon: DetailsIcon,
-  },
-  {
-    label: "Tags",
-    icon: TagIcon,
-  },
-];
-
-const CustomStepIcon = ({ active, completed, icon }) => {
-  const Icon = steps[icon - 1].icon;
-
-  return (
-    <Avatar
-      sx={{
-        ...(active && {
-          backgroundColor: (theme) => theme.palette.secondary.main,
-          color: (theme) => theme.palette.secondary.contrastText,
-          boxShadow: (theme) => theme.shadows[5],
-        }),
-        ...(completed && {
-          backgroundColor: (theme) => theme.palette.secondary.main,
-          color: (theme) => theme.palette.secondary.contrastText,
-        }),
-      }}
-    >
-      <Icon />
-    </Avatar>
-  );
-};
-
-CustomStepIcon.propTypes = {
-  active: PropTypes.bool,
-  completed: PropTypes.bool,
-  icon: PropTypes.number.isRequired,
-};
+import { steps, CustomStepIcon } from "./Steppers";
 
 const initialProjectState = {
   title: "",
   description: "",
-  tags: ["Frontend"],
+  budget: 0,
+  tags: [],
 };
 
 const reducer = (state, action) => {
@@ -86,6 +41,14 @@ const reducer = (state, action) => {
       return {
         ...state,
         description,
+      };
+    }
+    case "BUDGET": {
+      const { budget } = action.payload;
+
+      return {
+        ...state,
+        budget,
       };
     }
     case "TAGS": {
@@ -168,6 +131,14 @@ const ProjectCreateView = () => {
                   />
                 )}
                 {activeStep === 2 && (
+                  <ProjectBudget
+                    onBack={handleBack}
+                    onNext={handleNext}
+                    dispatch={dispatch}
+                    state={state}
+                  />
+                )}
+                {activeStep === 3 && (
                   <ProjectTags
                     onBack={handleBack}
                     onNext={handleComplete}

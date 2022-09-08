@@ -14,7 +14,6 @@ const ProjectDetails = ({ onBack, onNext, dispatch, state }) => {
     <Formik
       initialValues={{
         description: state.description || "",
-        submit: null,
       }}
       validationSchema={Yup.object().shape({
         description: Yup.string()
@@ -111,11 +110,10 @@ const ProjectDetails = ({ onBack, onNext, dispatch, state }) => {
 };
 
 ProjectDetails.propTypes = {
-  onNext: PropTypes.func,
-};
-
-ProjectDetails.defaultProps = {
-  onNext: () => {},
+  onBack: PropTypes.func.isRequired,
+  onNext: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  state: PropTypes.object.isRequired,
 };
 
 export default ProjectDetails;

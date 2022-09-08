@@ -9,25 +9,22 @@ import {
   FormHelperText,
 } from "@mui/material";
 
-const ProjectBasics = ({ onNext, dispatch, state }) => {
+const ProjectBudget = ({ onBack, onNext, dispatch, state }) => {
   return (
     <Formik
       initialValues={{
-        title: state.title || "",
+        budget: state.budget || 0,
       }}
       validationSchema={Yup.object().shape({
-        title: Yup.string()
-          .min(3, "Must be at least 3 characters")
-          .max(255)
-          .required("Required"),
+        budget: Yup.number().positive().required("Required"),
       })}
       onSubmit={async (values, { setStatus }) => {
         try {
           // dispatch
           dispatch({
-            type: "TITLE",
+            type: "BUDGET",
             payload: {
-              title: values.title,
+              budget: values.budget,
             },
           });
 
@@ -52,23 +49,23 @@ const ProjectBasics = ({ onNext, dispatch, state }) => {
       }) => (
         <form onSubmit={handleSubmit}>
           <Typography variant="h3" color="textPrimary">
-            Basic project information
+            Project budget
           </Typography>
           <Box mt={2}>
             <Typography variant="subtitle1" color="textSecondary">
-              Please provide the project title.
+              Please provide the project budget.
             </Typography>
           </Box>
           <Box mt={2}>
             <TextField
-              error={Boolean(touched.title && errors.title)}
+              error={Boolean(touched.budget && errors.budget)}
               fullWidth
-              helperText={touched.title && errors.title}
-              label="Project Title"
-              name="title"
+              helperText={touched.budget && errors.budget}
+              label="Project budget"
+              name="budget"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.title}
+              value={values.budget}
               variant="outlined"
             />
             {status && (
@@ -78,6 +75,18 @@ const ProjectBasics = ({ onNext, dispatch, state }) => {
             )}
           </Box>
           <Box mt={6} display="flex">
+            {onBack && (
+              <Button
+                onClick={onBack}
+                color="secondary"
+                disabled={isSubmitting}
+                type="submit"
+                variant="contained"
+                size="large"
+              >
+                Previous
+              </Button>
+            )}
             <Box flexGrow={1} />
             <Button
               color="secondary"
@@ -95,10 +104,11 @@ const ProjectBasics = ({ onNext, dispatch, state }) => {
   );
 };
 
-ProjectBasics.propTypes = {
+ProjectBudget.propTypes = {
+  onBack: PropTypes.func.isRequired,
   onNext: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
   state: PropTypes.object.isRequired,
 };
 
-export default ProjectBasics;
+export default ProjectBudget;
