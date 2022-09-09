@@ -8,17 +8,16 @@ import Activities from "./Activities";
 import Header from "./Header";
 import Overview from "./Overview";
 
+const tabs = [
+  { value: "overview", label: "Overview" },
+  { value: "activity", label: "Activity" },
+];
 
 const ProjectView = () => {
   const isMountedRef = useIsMountedRef();
   const [currentTab, setCurrentTab] = useState("overview");
   const [project, setProject] = useState(null);
   const { projectId } = useParams();
-
-  const tabs = [
-    { value: "overview", label: "Overview" },
-    { value: "activity", label: "Activity" },
-  ];
 
   const handleTabsChange = (event, value) => {
     setCurrentTab(value);
