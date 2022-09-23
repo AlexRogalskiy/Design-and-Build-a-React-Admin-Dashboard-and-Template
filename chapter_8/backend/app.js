@@ -2,19 +2,15 @@ const express = require("express");
 const cors = require("cors");
 const { errorHandler } = require("./middleware/errorHandler");
 const connectDB = require("./config/db");
-const bodyParser = require("body-parser");
 
 connectDB();
 
 const app = express();
 
-if (process.env.NODE_ENV === "production") {app.use(express.json());}
-else {
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({ extended: true }));
-}
+// middleware: json
+app.use(express.json());
 
-// middleware setup
+// middleware: cors
 app.use(
   cors({
     origin: true,
@@ -25,6 +21,7 @@ app.use(
 
 app.use("/api/projects", require("./routes/projects"));
 
+// middleware: error handling
 app.use(errorHandler);
 
 module.exports = app;

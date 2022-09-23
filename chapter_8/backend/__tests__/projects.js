@@ -7,13 +7,12 @@ const projectSample = require("../mockData/project1.json");
 const projectSample2 = require("../mockData/project2.json");
 const projectSample3 = require("../mockData/project3.json");
 
-
-afterAll((done) => {
-  mongoose.connection.close()
-  done();
-});
-
 describe("Project-related API", () => {
+  afterAll((done) => {
+    mongoose.connection.close();
+    done();
+  });
+
   it("GET all projects /api/projects", async () => {
     const response = await request(app).get("/api/projects");
 
