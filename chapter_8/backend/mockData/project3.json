@@ -1,0 +1,50 @@
+{
+  "title": "Scalable application development",
+  "budget": 6600,
+  "image": "/static/images/projects/project_3.jpg",
+  "membersCount": 2,
+  "author": {
+    "avatar": "/static/images/avatars/avatar_3.png",
+    "name": "Mahthildis Rashid"
+  },
+  "members": [
+    {
+      "avatar": "/static/images/avatars/avatar_5.png",
+      "name": "Lei Zhang"
+    },
+    {
+      "avatar": "/static/images/avatars/avatar_1.png",
+      "name": "Mahthildis Rashid"
+    }
+  ],
+  "activities": [
+    {
+      "_id": "b35y-e190-4610-uy55-38e4-bdfe",
+      "createdAt": "2022-09-21T05:51:11.939+00:00",
+      "description": "updated the project description",
+      "subject": "Project manager",
+      "type": "update_project"
+    },
+    {
+      "_id": "b35y-e190-4610-uy55-38e4-5e8d",
+      "createdAt": "2022-09-20T05:51:11.939+00:00",
+      "description": "joined the project as a team member",
+      "subject": "Lei Zhang",
+      "type": "join_project"
+    },
+    {
+      "_id": "b35y-e190-4610-uy55-38e4-d8f4",
+      "createdAt": "2022-09-18T05:51:11.939+00:00",
+      "description": "updated the project budget",
+      "subject": "Project manager",
+      "type": "budget_change"
+    },
+    {
+      "_id": "b35y-e190-4610-uy55-38e4-21c5",
+      "createdAt": "2022-09-11T05:51:11.939+00:00",
+      "description": "was created",
+      "subject": "Springboard",
+      "type": "item_created"
+    }
+  ]
+}

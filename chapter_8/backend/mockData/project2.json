@@ -1,0 +1,61 @@
+{
+  "title": "Component design",
+  "budget": 1800,
+  "image": "/static/images/projects/project_2.jpg",
+  "membersCount": 3,
+  "author": {
+    "avatar": "/static/images/avatars/avatar_2.png",
+    "name": "Netta Elías"
+  },
+  "members": [
+    {
+      "avatar": "/static/images/avatars/avatar_2.png",
+      "name": "Miller Edwards"
+    },
+    {
+      "avatar": "/static/images/avatars/avatar_3.png",
+      "name": "Mahthildis Rashid"
+    },
+    {
+      "avatar": "/static/images/avatars/avatar_4.png",
+      "name": "Merrile Burgett"
+    }
+  ],
+  "activities": [
+    {
+      "_id": "b35y-e190-4610-82ab-38e4-bdfe",
+      "createdAt": "2022-09-21T05:51:11.939+00:00",
+      "description": "updated the project description",
+      "subject": "Project manager",
+      "type": "update_project"
+    },
+    {
+      "_id": "b35y-e190-4610-82ab-38e4-5e8d",
+      "createdAt": "2022-09-20T05:51:11.939+00:00",
+      "description": "joined the project as a team member",
+      "subject": "Mahthildis Rashid",
+      "type": "join_project"
+    },
+    {
+      "_id": "b35y-e190-4610-82ab-38e4-5cf1",
+      "createdAt": "2022-09-15T05:51:11.939+00:00",
+      "description": "joined the project as a team member",
+      "subject": "Merrile Burgett",
+      "type": "join_project"
+    },
+    {
+      "_id": "b35y-e190-4610-82ab-38e4-d8f4",
+      "createdAt": "2022-09-14T05:51:11.939+00:00",
+      "description": "updated the project budget",
+      "subject": "Project manager",
+      "type": "budget_change"
+    },
+    {
+      "_id": "b35y-e190-4610-82ab-38e4-21c5",
+      "createdAt": "2022-09-13T05:51:11.939+00:00",
+      "description": "was created",
+      "subject": "Springboard",
+      "type": "item_created"
+    }
+  ]
+}
