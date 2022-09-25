@@ -1,15 +1,8 @@
-# Replicate the development environment
+# Design and Build a React Admin Dashboard and Template
+## Chapter 2
 
-You can follow the steps below to replicate the development environment:
+To run what we built for this chapter locally, you will need to:
 
-1. Clone this GitHub repository to your local machine.
-2. In your terminal, navigate to /chapter_2 
-3. Install all the dependencies by running `npm install`
+1. Clone this repository to your local machine.
 
-## `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. Open your terminal, navigate into this folder, and run `npm install`. After all dependencies are installed, run `npm start`.
