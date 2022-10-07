@@ -349,7 +349,7 @@ const JWT_EXPIRES_IN = "5 days";
 createServer({
   routes() {
 
-    this.passthrough("http://localhost:5000/**");
+    this.passthrough(process.env.REACT_APP_BACKEND_URL + "/**");
 
     this.namespace = "api";
 
@@ -633,13 +633,13 @@ createServer({
     //   return { projects };
     // });
 
-    this.get("/projects/:projectId", async (schema, request) => {
-      const projectId = request.params.projectId;
+    // this.get("/projects/:projectId", async (schema, request) => {
+    //   const projectId = request.params.projectId;
 
-      const project = projects.find((project) => project.id === projectId);
+    //   const project = projects.find((project) => project.id === projectId);
 
-      return { project };
-    });
+    //   return { project };
+    // });
 
     this.passthrough();
   },

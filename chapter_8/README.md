@@ -5,8 +5,8 @@ Different from the folders of prior chapters, this folder contains two subfolder
 
 ### How to use the backend
 
-To run the backend locally, please read [this](https://github.com/PacktPublishing/Design-and-Build-a-React-Admin-Dashboard-and-Template/blob/main/chapter_8/frontend/README.md).
+To run the backend locally, please read [this](https://github.com/PacktPublishing/Design-and-Build-a-React-Admin-Dashboard-and-Template/blob/main/chapter_8/backend/README.md).
 
 ### How to use the frontend
 
-To run the adapted admin template, please read [this](https://github.com/PacktPublishing/Design-and-Build-a-React-Admin-Dashboard-and-Template/blob/main/chapter_8/backend/README.md).
+To run the adapted admin template, please read [this](https://github.com/PacktPublishing/Design-and-Build-a-React-Admin-Dashboard-and-Template/blob/main/chapter_8/frontend/README.md).
