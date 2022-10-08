@@ -13,7 +13,7 @@ const NavData = [
     ],
   },
   {
-    header: "Applications",
+    header: "Projects",
     items: [
       {
         title: "Overview",
