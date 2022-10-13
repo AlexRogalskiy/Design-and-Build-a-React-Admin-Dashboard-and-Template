@@ -73,11 +73,6 @@ const ProjectCard = ({ project }) => {
           </Box>
         </Box>
       </Box>
-      <Box pb={2} px={3}>
-        <Typography color="textSecondary" variant="body2">
-          {project.caption}
-        </Typography>
-      </Box>
       <Divider />
       <Box py={2} pl={2} pr={3} display="flex" alignItems="center">
         <Typography variant="subtitle2" color="textSecondary">
