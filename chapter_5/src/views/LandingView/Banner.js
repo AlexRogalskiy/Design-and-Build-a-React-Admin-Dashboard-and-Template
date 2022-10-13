@@ -51,7 +51,7 @@ const Banner = () => {
                   </Grid>
                   <Grid item>
                     <Typography variant="h1" color="secondary">
-                      10
+                      11
                     </Typography>
                     <Typography variant="overline" color="textSecondary">
                       Demo Pages

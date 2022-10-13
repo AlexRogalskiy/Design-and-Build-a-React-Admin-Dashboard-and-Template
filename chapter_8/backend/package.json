@@ -1,7 +1,7 @@
 {
   "name": "kiki-backend-demo",
   "version": "1.0.0",
-  "description": "",
+  "description": "Demo of a backend suppored by Express and MongoDB",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
