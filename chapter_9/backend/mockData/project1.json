@@ -1,0 +1,63 @@
+{
+  "title": "Frontend Mock up",
+  "description": "This is our first frontend project.",
+  "image": "/static/images/projects/project_1.jpg",
+  "tags": ["React", "Dashboard"],
+  "budget": 4600,
+  "membersCount": 3,
+  "author": {
+    "avatar": "/static/images/avatars/avatar_1.png",
+    "name": "Celsus Yuval"
+  },
+  "members": [
+    {
+      "avatar": "/static/images/avatars/avatar_1.png",
+      "name": "Celsus Yuval"
+    },
+    {
+      "avatar": "/static/images/avatars/avatar_2.png",
+      "name": "Netta Elías"
+    },
+    {
+      "avatar": "/static/images/avatars/avatar_3.png",
+      "name": "Mahthildis Rashid"
+    }
+  ],
+  "activities": [
+    {
+      "_id": "e7ef-e190-4610-82ab-38e4-bdfe",
+      "createdAt": "2022-09-21T05:51:11.939+00:00",
+      "description": "updated the project description",
+      "subject": "Project manager",
+      "type": "update_project"
+    },
+    {
+      "_id": "e7ef-e190-4610-82ab-38e4-5e8d",
+      "createdAt": "2022-09-20T05:51:11.939+00:00",
+      "description": "joined the project as a team member",
+      "subject": "Netta Elías",
+      "type": "join_project"
+    },
+    {
+      "_id": "e7ef-e190-4610-82ab-38e4-5cf1",
+      "createdAt": "2022-09-12T05:51:11.939+00:00",
+      "description": "joined the project as a team member",
+      "subject": "Mahthildis Rashid",
+      "type": "join_project"
+    },
+    {
+      "_id": "e7ef-e190-4610-82ab-38e4-d8f4",
+      "createdAt": "2022-09-11T05:51:11.939+00:00",
+      "description": "updated the project budget",
+      "subject": "Project manager",
+      "type": "budget_change"
+    },
+    {
+      "_id": "e7ef-e190-4610-82ab-38e4-21c5",
+      "createdAt": "2022-09-10T05:51:11.939+00:00",
+      "description": "was created",
+      "subject": "Springboard",
+      "type": "item_created"
+    }
+  ]
+}
