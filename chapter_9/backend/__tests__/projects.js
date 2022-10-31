@@ -35,6 +35,8 @@ describe("Project-related API", () => {
       .send({ query: `mutation{addProject(` + projectStr + `) {_id, title} }` })
       .set("Accept", "application/json");
 
+    console.log(response);
+
     expect(response.statusCode).toEqual(200);
     expect(response.body.data.addProject.title).toEqual("Frontend Mock up");
   });
