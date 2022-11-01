@@ -19,7 +19,7 @@ import { useMutation } from "urql";
 
 
 const CREATE_PROJECT = `
-  mutation ($title: String!, $description: String!, $image: String!, $budget: Int!, $membersCount: Int!, $tags: [String!]!, $author: inputMember!, $members: [inputMember!]!, $activities: [inputActivity!]!) { 
+  mutation ($title: String!, $description: String, $image: String, $budget: Int!, $membersCount: Int, $tags: [String], $author: MemberInput!, $members: [MemberInput], $activities: [ActivityInput]) { 
     addProject(
       title: $title,
       description: $description,
@@ -60,7 +60,7 @@ const ProjectTags = ({ onBack, onNext, dispatch, state }) => {
           });
 
           // make API call
-          const variables =             {
+          const variables = {
             ...state,
             image: "/static/images/projects/project_1.jpg",
             user,

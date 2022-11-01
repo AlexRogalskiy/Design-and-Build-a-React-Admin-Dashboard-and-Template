@@ -349,7 +349,7 @@ const JWT_EXPIRES_IN = "5 days";
 createServer({
   routes() {
 
-    this.passthrough(process.env.REACT_APP_BACKEND_URL + "/**");
+    this.passthrough(process.env.REACT_APP_BACKEND_URL);
 
     this.namespace = "api";
 

@@ -9,7 +9,7 @@ import "App.css";
 import { createClient, Provider } from "urql";
 
 const client = createClient({
-  url: "http://localhost:5000/api",
+  url: process.env.REACT_APP_BACKEND_URL,
 });
 
 const App = () => {
